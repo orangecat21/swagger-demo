@@ -1,0 +1,78 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Cocktail shop",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/flavours": {
+      "get": {
+        "tags": ["Flavours"],
+        "description": "Get all flavours of cocktails",
+        "summary": "Get a flavours",
+        "responses": {
+          "200": {
+            "description": "Gets an array of flavours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flavours/{flavourId}": {
+      "get": {
+        "tags": ["Flavours"],
+        "summary": "Get a flavour",
+        "description": "Get only one flavour by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "flavourId",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "example": 21
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gets a flavour",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Flavour": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 21
+          },
+          "name": {
+            "type": "string",
+            "example": "Strawberry"
+          }
+        }
+      }
+    }
+  }
+}
